@@ -1,0 +1,20 @@
+<?php
+
+	class View{
+
+		public function __construct(){
+
+		}
+
+		//FORMULAIRE DE CONNEXION
+
+		public function Formulaire(){
+			$user = "<input type = 'text' name = 'user'  placeholder='Utilisateur'>";
+			$passwd = "<input type = 'text' name = 'passwd'  placeholder='Mot de passe'>";
+			$valider = "<input type='submit' value='Se connecter'>";
+			echo "<form method='POST' action=''>".$user.$passwd.$valider."</form>";
+		}
+
+	}
+
+?>
