@@ -1,11 +1,22 @@
 <?php
-
-	require_once("class/connexion.class.php");
-	require_once("view/view.class.php");
-
-	$CONNEXION = new Connexion("localhost","root","");
-	$FORM = new View();
-	$CONNEXION->List_DB();
+require_once("Classes/pdo.class.php");
 
 
-?>
+
+if (isset($_GET['ref'])) {
+  $idbd=$_GET['ref'];
+
+  $test=new Pdo_Connexion("$idbd");
+
+
+  $test->listeTab ($idbd);
+}
+else {
+  $test=new Pdo_Connexion("");
+  $test->Databases ();
+}
+
+
+
+
+ ?>
