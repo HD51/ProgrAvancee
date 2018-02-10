@@ -1,0 +1,39 @@
+<?php
+
+	class Connexion{
+
+		public $pdo, $server, $user, $passwd;
+
+
+		public function __construct($server,$user,$passwd){
+		
+			$this->server = $server;
+			$this->user = $user;
+			$this->passwd = $passwd;
+			$this->connexion();
+
+		}
+
+		public function connexion(){
+
+			try {
+
+				$this->pdo = new PDO('mysql:host='.$this->server.';dbname='.";charset=utf8", $this->user, $this->passwd);
+			
+			}
+			
+			catch (PDOException $e) {
+				echo "Connexion à la base de données impossible.";
+				die();
+			}
+
+		}
+		
+		public function List_DB () {
+			$SQL = "show databases";
+		    $RES = $this->PDO->prepare($SQL);
+		    $RES->execute();
+		    return $RES->fetchAll();
+ 		 }
+
+	}
