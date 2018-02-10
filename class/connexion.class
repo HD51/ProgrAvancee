@@ -45,11 +45,32 @@ class Pdo_Connexion {
   		$RES->execute();
   	  $listebdd = $RES->fetchAll ();
       foreach ($listebdd as $value) {
-      echo "<a href='index.php?ref=".$value[0]."'>".$value[0]."</a><br>";
+      echo "<a href='index.php?ref=".$dbname."&tab=".$value[0]."'>".$value[0]."</a><br>";
       }
+    }
+
+
+
+    public function structab ($tabname) {
+      echo "<h1>Structure de la table ".$tabname."</h1>";
+  		$REQ = "show columns from $tabname";
+  		$RES = $this->CNX->prepare($REQ);
+  		$RES->execute();
+  	  $listebdd = $RES->fetchAll ();
+      foreach ($listebdd as $value) {
+      echo "<table>
+					<tr>
+						<td>".$value[0]."</td>
+						<td>".$value[1]."</td>
+						<td>".$value[2]."</td>
+						<td>".$value[3]."</td>
+						<td>".$value[4]."</td>
+            <td>".$value[5]."</td>
+					</tr></table>";
+      }
+
     }
 
 }
 
 ?>
-
